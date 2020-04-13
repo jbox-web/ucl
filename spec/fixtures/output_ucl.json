@@ -1,0 +1,46 @@
+{
+    "string": "bar",
+    "true": true,
+    "false": false,
+    "nil": null,
+    "integer": 1864,
+    "double": 23.420000,
+    "time": 10.0,
+    "array": [
+        "foo",
+        true,
+        false,
+        null,
+        1864,
+        23.420000,
+        10.0
+    ],
+    "hash": {
+        "foo": "bar",
+        "bar": "baz",
+        "baz": "foo"
+    },
+    "array_of_array": [
+        [
+            "foo",
+            "bar"
+        ],
+        [
+            "bar",
+            "baz"
+        ]
+    ],
+    "section": {
+        "foo": {
+            "key": "value"
+        },
+        "bar": {
+            "key": "value"
+        },
+        "baz": {
+            "foo": {
+                "key": "value"
+            }
+        }
+    }
+}
