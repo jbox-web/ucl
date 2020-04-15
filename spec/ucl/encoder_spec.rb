@@ -80,29 +80,29 @@ RSpec.describe UCL::Encoder do
         expect(encoder.encode(input_object, 'json_compact')).to eq(output_ucl_conf.chomp)
       end
     end
-  end
 
-  context 'when key object is not serializable' do
-    let(:input_object) do
-      { Object.new => 'foo' }
+    context 'when key object is not serializable' do
+      let(:input_object) do
+        { Object.new => 'foo' }
+      end
+
+      it 'raises an error' do
+        expect {
+          encoder.encode(input_object)
+        }.to raise_error(UCL::Error::TypeError)
+      end
     end
 
-    it 'raises an error' do
-      expect {
-        encoder.encode(input_object)
-      }.to raise_error(UCL::Error::TypeError)
-    end
-  end
+    context 'when value object is not serializable' do
+      let(:input_object) do
+        { 'foo' => Object.new }
+      end
 
-  context 'when value object is not serializable' do
-    let(:input_object) do
-      { 'foo' => Object.new }
-    end
-
-    it 'raises an error' do
-      expect {
-        encoder.encode(input_object)
-      }.to raise_error(UCL::Error::TypeError)
+      it 'raises an error' do
+        expect {
+          encoder.encode(input_object)
+        }.to raise_error(UCL::Error::TypeError)
+      end
     end
   end
 end
