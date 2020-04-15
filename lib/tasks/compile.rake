@@ -10,15 +10,15 @@ task :compile do
 
   system 'git', 'submodule', 'update', '--init'
 
-  Dir.chdir(ext_dir) do |path|
+  Dir.chdir(ext_dir) do |_path|
     system './autogen.sh'
   end
 
-  Dir.chdir(ext_dir) do |path|
+  Dir.chdir(ext_dir) do |_path|
     system './configure'
   end
 
-  Dir.chdir(ext_dir) do |path|
+  Dir.chdir(ext_dir) do |_path|
     system 'make'
   end
 
@@ -30,7 +30,7 @@ task :make_clean do
   ext_dir = "#{__dir__}/../../ext/libucl"
   lib_dir = "#{__dir__}/../ucl/"
 
-  Dir.chdir(ext_dir) do |path|
+  Dir.chdir(ext_dir) do |_path|
     system 'make clean'
   end
 
