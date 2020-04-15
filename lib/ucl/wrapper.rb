@@ -3,7 +3,8 @@
 module UCL
   module Wrapper
     extend FFI::Library
-    ffi_lib 'ucl'
+
+    ffi_lib ['ucl', "#{__dir__}/libucl.so"]
 
     class Value < FFI::Union
       layout :iv, :int64,

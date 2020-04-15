@@ -23,6 +23,12 @@ gem 'ucl'
 
 then run `bundle install`.
 
+[LibUCL](https://github.com/vstakhov/libucl) is vendored with the gem and is automatically compiled when you install the gem.
+
+You can disable this behavior by setting `USE_GLOBAL_LIBUCL` environment variable to `true` before running `bundle install`.
+
+By default the gem looks for `libucl.so` in the system path and fallbacks to the bundled version if not found.
+
 
 ## Usage
 
@@ -217,6 +223,14 @@ section {
 }
 '''
 ```
+
+
+## Development
+
+To compile LibUCL in dev environment use `bin/rake compile`.
+
+To run specs use `bin/rspec`.
+
 
 ## Other bindings
 

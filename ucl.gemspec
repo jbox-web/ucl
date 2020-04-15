@@ -22,6 +22,8 @@ Gem::Specification.new do |s|
 
   s.files = `git ls-files`.split("\n")
 
+  s.extensions << 'ext/Rakefile'
+
   s.add_runtime_dependency 'ffi'
   s.add_runtime_dependency 'zeitwerk'
 

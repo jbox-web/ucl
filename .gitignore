@@ -7,3 +7,6 @@ gemfiles/*.lock
 
 # Ignore test files
 coverage/
+
+# Ignore .so files
+*.so

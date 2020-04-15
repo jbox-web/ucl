@@ -1,0 +1,8 @@
+# frozen_string_literal: true
+
+if ENV.key?('USE_GLOBAL_LIBUCL')
+  exit(0)
+else
+  Rake.add_rakelib '../lib/tasks'
+  task default: :compile
+end

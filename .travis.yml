@@ -8,6 +8,7 @@ rvm:
   - ruby-head
   - jruby-9.2.11.0
 before_script:
+  - bundle exec rake compile
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build

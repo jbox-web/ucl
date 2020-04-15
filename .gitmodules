@@ -1,0 +1,3 @@
+[submodule "ext/libucl"]
+	path = ext/libucl
+	url = https://github.com/vstakhov/libucl.git
