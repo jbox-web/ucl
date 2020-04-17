@@ -22,4 +22,17 @@ module UCL
     encoder.encode(object, emit_type)
   end
 
+
+  def self.validate(schema, string)
+    validator = Validator.new
+    validator.validate(schema, string)
+  end
+
+
+  def self.valid?(schema, string)
+    validate(schema, string)
+  rescue UCL::Error::SchemaError
+    false
+  end
+
 end

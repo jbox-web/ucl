@@ -224,6 +224,34 @@ section {
 '''
 ```
 
+* `UCL.validate(schema, string)`
+
+```ruby
+schema =
+  '''
+  {
+    "type": "object",
+    "properties": {
+      "key": {
+        "type": "string"
+      }
+    }
+  }
+  '''
+
+ucl_conf =
+  '''
+  {
+    "key": "some string"
+  }
+  '''
+
+puts UCL.validate(schema, string) # =>
+true
+```
+
+It raises an exception (`UCL::Error::SchemaError`) if the schema is not valid.
+
 
 ## Development
 

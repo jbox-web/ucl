@@ -27,6 +27,19 @@ module UCL
       UCL_EMIT_MAX
     ]
 
+    SchemaErrorCode = enum %i[
+      UCL_SCHEMA_OK
+      UCL_SCHEMA_TYPE_MISMATCH
+      UCL_SCHEMA_INVALID_SCHEMA
+      UCL_SCHEMA_MISSING_PROPERTY
+      UCL_SCHEMA_CONSTRAINT
+      UCL_SCHEMA_MISSING_DEPENDENCY
+      UCL_SCHEMA_EXTERNAL_REF_MISSING
+      UCL_SCHEMA_EXTERNAL_REF_INVALID
+      UCL_SCHEMA_INTERNAL_ERROR
+      UCL_SCHEMA_UNKNOWN
+    ]
+
     class Value < FFI::Union
       layout :iv, :int64,
              :sv, :char,
@@ -65,6 +78,21 @@ module UCL
       end
     end
 
+    class SchemaError < FFI::Struct
+      layout :code, UCL::Wrapper::SchemaErrorCode,
+             :msg, [:char, 128],
+             :obj, UclObject
+
+      def code
+        self[:code]
+      end
+
+      def message
+        self[:msg]
+      end
+    end
+
+
     attach_function :new,                 :ucl_parser_new,          [:int],                     :pointer
     attach_function :add_string,          :ucl_parser_add_string,   %i[pointer pointer size_t], :bool
     attach_function :get_error,           :ucl_parser_get_error,    [:pointer],                 :string
@@ -81,6 +109,7 @@ module UCL
     attach_function :object_iterate_free, :ucl_object_iterate_free, [:pointer],         :void
 
     attach_function :object_emit,         :ucl_object_emit,         [UclObject.by_ref, :int], :string
+    attach_function :object_validate,     :ucl_object_validate,     [UclObject.by_ref, UclObject.by_ref, SchemaError], :bool
     attach_function :array_append,        :ucl_array_append,        [UclObject.by_ref, UclObject.by_ref], :bool
     attach_function :object_replace_key,  :ucl_object_replace_key,  [UclObject.by_ref, UclObject.by_ref, :string, :size_t, :bool], :bool
 
