@@ -3,36 +3,14 @@
 module UCL
   class Decoder
 
-    def initialize(parser = UCL::Wrapper.new(0))
-      @parser = parser
-    end
-
 
     def decode(string)
-      load_string(string.encode('utf-8'))
-      check_error
-      load_result
+      object = UCL::Parser.parse(string)
+      convert_ucl_object(object)
     end
 
 
     private
-
-
-    def load_string(string)
-      UCL::Wrapper.add_string(@parser, string, string.length)
-    end
-
-
-    def check_error
-      error = UCL::Wrapper.get_error(@parser)
-      raise UCL::Error::DecoderError, error unless error.nil?
-    end
-
-
-    def load_result
-      object = UCL::Wrapper.get_object(@parser)
-      convert_ucl_object(object)
-    end
 
 
     def convert_ucl_object(object)
