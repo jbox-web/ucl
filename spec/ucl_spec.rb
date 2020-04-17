@@ -37,6 +37,7 @@ RSpec.describe UCL do
     end
   end
 
+
   describe '.validate' do
     context 'when input data are valid' do
       let(:schema) do
@@ -94,6 +95,7 @@ RSpec.describe UCL do
       end
     end
   end
+
 
   describe '.valid?' do
     context 'when input data are valid' do
