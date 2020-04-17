@@ -6,6 +6,27 @@ module UCL
 
     ffi_lib ['ucl', "#{__dir__}/libucl.so"]
 
+    Types = enum %i[
+      UCL_OBJECT
+      UCL_ARRAY
+      UCL_INT
+      UCL_FLOAT
+      UCL_STRING
+      UCL_BOOLEAN
+      UCL_TIME
+      UCL_USERDATA
+      UCL_NULL
+    ]
+
+    Emitters = enum %i[
+      UCL_EMIT_JSON
+      UCL_EMIT_JSON_COMPACT
+      UCL_EMIT_CONFIG
+      UCL_EMIT_YAML
+      UCL_EMIT_MSGPACK
+      UCL_EMIT_MAX
+    ]
+
     class Value < FFI::Union
       layout :iv, :int64,
              :sv, :char,
@@ -43,27 +64,6 @@ module UCL
         pointer.address
       end
     end
-
-    Types = enum %i[
-      UCL_OBJECT
-      UCL_ARRAY
-      UCL_INT
-      UCL_FLOAT
-      UCL_STRING
-      UCL_BOOLEAN
-      UCL_TIME
-      UCL_USERDATA
-      UCL_NULL
-    ]
-
-    Emitters = enum %i[
-      UCL_EMIT_JSON
-      UCL_EMIT_JSON_COMPACT
-      UCL_EMIT_CONFIG
-      UCL_EMIT_YAML
-      UCL_EMIT_MSGPACK
-      UCL_EMIT_MAX
-    ]
 
     attach_function :new,                 :ucl_parser_new,          [:int],                     :pointer
     attach_function :add_string,          :ucl_parser_add_string,   %i[pointer pointer size_t], :bool
