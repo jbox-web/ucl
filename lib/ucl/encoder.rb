@@ -15,7 +15,7 @@ module UCL
     DEFAULT_EMITTER = 'config'
 
 
-    def encode(object, emit_type = DEFAULT_EMITTER)
+    def self.encode(object, emit_type = DEFAULT_EMITTER)
       emit_type  = EMITTERS[emit_type]
       ucl_object = to_ucl_object(object)
       UCL::Wrapper.object_emit(ucl_object, emit_type)
@@ -26,7 +26,7 @@ module UCL
 
 
     # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
-    def to_ucl_object(object)
+    def self.to_ucl_object(object)
       case object.class.name
       when 'Array'
         array = UCL::Wrapper.object_typed_new(UCL::Wrapper::Types[:UCL_ARRAY])

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe UCL::Decoder do
 
-  let(:decoder) { described_class.new }
+  let(:decoder) { described_class }
 
   let(:input_ucl_conf) { File.read(get_fixture_path('input_ucl.conf')) }
 
@@ -54,7 +54,7 @@ RSpec.describe UCL::Decoder do
   end
 
 
-  describe '#decode' do
+  describe '.decode' do
     it 'should decode UCL conf' do
       expect(decoder.decode(input_ucl_conf)).to eq(output_object)
     end

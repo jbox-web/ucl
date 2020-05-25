@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe UCL::Encoder do
 
-  let(:encoder) { described_class.new }
+  let(:encoder) { described_class }
 
   let(:input_object) do
     {
@@ -48,7 +48,7 @@ RSpec.describe UCL::Encoder do
   end
 
 
-  describe '#encode' do
+  describe '.encode' do
     context 'when emit_type is config' do
       let(:output_ucl_conf) { File.read(get_fixture_path('output_ucl.conf')) }
 

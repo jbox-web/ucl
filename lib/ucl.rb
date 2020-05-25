@@ -12,14 +12,12 @@ loader.setup
 module UCL
 
   def self.load(string)
-    decoder = Decoder.new
-    decoder.decode(string)
+    Decoder.decode(string)
   end
 
 
   def self.dump(object, emit_type = Encoder::DEFAULT_EMITTER)
-    encoder = Encoder.new
-    encoder.encode(object, emit_type)
+    Encoder.encode(object, emit_type)
   end
 
 

@@ -4,7 +4,7 @@ module UCL
   class Decoder
 
 
-    def decode(string)
+    def self.decode(string)
       object = UCL::Parser.parse(string)
       convert_ucl_object(object)
     end
@@ -13,7 +13,7 @@ module UCL
     private
 
 
-    def convert_ucl_object(object)
+    def self.convert_ucl_object(object)
       result = convert_ucl_object_direct(object)
 
       if !object.next.null? && object.type != UCL::Wrapper::Types[:UCL_OBJECT]
@@ -32,7 +32,7 @@ module UCL
 
 
     # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
-    def convert_ucl_object_direct(object)
+    def self.convert_ucl_object_direct(object)
       case object.type
       when UCL::Wrapper::Types[:UCL_OBJECT]
         hash = {}
@@ -72,7 +72,7 @@ module UCL
     # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
 
 
-    def iter_ucl_object(object)
+    def self.iter_ucl_object(object)
       iterator = UCL::Wrapper.object_iterate_new(object)
       loop do
         ptr = UCL::Wrapper.object_iterate_safe(iterator, true)
