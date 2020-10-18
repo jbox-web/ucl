@@ -10,9 +10,6 @@ module UCL
     end
 
 
-    private
-
-
     def self.convert_ucl_object(object)
       result = convert_ucl_object_direct(object)
 
@@ -29,6 +26,7 @@ module UCL
 
       result
     end
+    private_class_method :convert_ucl_object
 
 
     # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
@@ -70,6 +68,7 @@ module UCL
       end
     end
     # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
+    private_class_method :convert_ucl_object_direct
 
 
     def self.iter_ucl_object(object)
@@ -83,6 +82,7 @@ module UCL
     ensure
       UCL::Wrapper.object_iterate_free(iterator)
     end
+    private_class_method :iter_ucl_object
 
   end
 end

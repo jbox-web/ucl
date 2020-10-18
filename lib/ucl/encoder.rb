@@ -22,9 +22,6 @@ module UCL
     end
 
 
-    private
-
-
     # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
     def self.to_ucl_object(object)
       case object.class.name
@@ -59,6 +56,7 @@ module UCL
       end
     end
     # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
+    private_class_method :to_ucl_object
 
   end
 end
