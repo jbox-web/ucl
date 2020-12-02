@@ -14,7 +14,7 @@ module UCL
 
 
     def initialize
-      @parser = UCL::Wrapper.new(UCL::Wrapper::ParserFlags[:UCL_PARSER_NO_TIME])
+      @parser = UCL::Wrapper.new(UCL::Wrapper::ParserFlags[:UCL_PARSER_NO_TIME] | UCL::Wrapper::ParserFlags[:UCL_PARSER_NO_IMPLICIT_ARRAYS])
     end
 
 

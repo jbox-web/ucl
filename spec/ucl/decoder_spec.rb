@@ -37,19 +37,37 @@ RSpec.describe UCL::Decoder do
       'auto_array' => {
         'key' => ['foo', 'bar', 'baz']
       },
-      'section' => {
-        'foo' => {
-          'key' => 'value'
-        },
-        'bar' => {
-          'key' => 'value',
-        },
-        'baz' => {
+      'section' => [
+        {
           'foo' => {
             'key' => 'value'
-          }
+          },
         },
-      },
+        {
+          'bar' => {
+            'key' => 'value',
+          },
+        },
+        {
+          'baz' => {
+            'foo' => {
+              'key' => 'value'
+            }
+          },
+        },
+      ],
+      'subsection' => {
+        'host' => [
+          {
+            'host' => 'hostname',
+            'port' => 900,
+          },
+          {
+            'host' => 'hostname',
+            'port' => 901,
+          }
+        ]
+      }
     }
   end
 
