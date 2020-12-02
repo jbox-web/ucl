@@ -40,6 +40,32 @@ module UCL
       UCL_SCHEMA_UNKNOWN
     ]
 
+    ParserFlags = enum [
+      # No special flags
+      :UCL_PARSER_DEFAULT, 0,
+
+      # Convert all keys to lower case
+      :UCL_PARSER_KEY_LOWERCASE, (1 << 0),
+
+      # Parse input in zero-copy mode if possible
+      :UCL_PARSER_ZEROCOPY, (1 << 1),
+
+      # Do not parse time and treat time values as strings
+      :UCL_PARSER_NO_TIME, (1 << 2),
+
+      # Create explicit arrays instead of implicit ones
+      :UCL_PARSER_NO_IMPLICIT_ARRAYS, (1 << 3),
+
+      # Save comments in the parser context
+      :UCL_PARSER_SAVE_COMMENTS, (1 << 4),
+
+      # Treat macros as comments
+      :UCL_PARSER_DISABLE_MACRO, (1 << 5),
+
+      # Do not set file vars
+      :UCL_PARSER_NO_FILEVARS, (1 << 6),
+    ]
+
     class Value < FFI::Union
       layout :iv, :int64,
              :sv, :char,

@@ -15,7 +15,7 @@ RSpec.describe UCL::Decoder do
       'nil'     => nil,
       'integer' => 1864,
       'double'  => 23.42,
-      'time'    => 10.0,
+      'time'    => '10s',
       'array'   => [
         'foo',
         true,
@@ -23,7 +23,7 @@ RSpec.describe UCL::Decoder do
         nil,
         1864,
         23.42,
-        10.0
+        '10s'
       ],
       'hash' => {
         'foo' => 'bar',
@@ -31,8 +31,8 @@ RSpec.describe UCL::Decoder do
         'baz' => 'foo'
       },
       'array_of_array' => [
-        ["foo", "bar"],
-        ["bar", "baz"]
+        ['foo', 'bar'],
+        ['bar', 'baz']
       ],
       'auto_array' => {
         'key' => ['foo', 'bar', 'baz']
