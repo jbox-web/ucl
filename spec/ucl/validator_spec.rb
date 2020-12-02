@@ -2,9 +2,7 @@ require 'spec_helper'
 
 RSpec.describe UCL::Validator do
 
-  let(:validator) { described_class.new }
-
-  describe '#validate' do
+  describe '.validate' do
     context 'when input data are valid' do
       let(:schema) do
         '''
@@ -28,7 +26,7 @@ RSpec.describe UCL::Validator do
       end
 
       it 'can validate object' do
-        expect(validator.validate(schema, string)).to be true
+        expect(described_class.validate(schema, string)).to be true
       end
     end
 
@@ -56,7 +54,7 @@ RSpec.describe UCL::Validator do
 
       it 'can validate object' do
         expect {
-          validator.validate(schema, string)
+          described_class.validate(schema, string)
         }.to raise_error(UCL::Error::SchemaError)
       end
     end

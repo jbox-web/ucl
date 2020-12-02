@@ -22,8 +22,7 @@ module UCL
 
 
   def self.validate(schema, string)
-    validator = Validator.new
-    validator.validate(schema, string)
+    Validator.validate(schema, string)
   end
 
 
