@@ -265,3 +265,4 @@ To run specs use `bin/rspec`.
 * [Go](https://github.com/mitchellh/go-libucl)
 * [Rust](https://github.com/draft6/libucl-rs)
 * [Python](https://github.com/vstakhov/libucl/tree/master/python)
+* [Crystal](https://github.com/jbox-web/ucl.cr)
