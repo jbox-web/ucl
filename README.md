@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/jbox-web/ucl.svg)](https://github.com/jbox-web/ucl/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/jbox-web/ucl.svg)](https://github.com/jbox-web/ucl/releases/latest)
-[![Build Status](https://travis-ci.com/jbox-web/ucl.svg?branch=master)](https://travis-ci.com/jbox-web/ucl)
+[![CI](https://github.com/jbox-web/ucl/workflows/CI/badge.svg)](https://github.com/jbox-web/ucl/actions)
 [![Code Climate](https://codeclimate.com/github/jbox-web/ucl/badges/gpa.svg)](https://codeclimate.com/github/jbox-web/ucl)
 [![Test Coverage](https://codeclimate.com/github/jbox-web/ucl/badges/coverage.svg)](https://codeclimate.com/github/jbox-web/ucl/coverage)
 
