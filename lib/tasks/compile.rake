@@ -12,13 +12,7 @@ task :compile do
 
   Dir.chdir(ext_dir) do |_path|
     system './autogen.sh'
-  end
-
-  Dir.chdir(ext_dir) do |_path|
     system './configure'
-  end
-
-  Dir.chdir(ext_dir) do |_path|
     system 'make'
   end
 
