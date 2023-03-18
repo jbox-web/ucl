@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe UCL::Validator do
-
   describe '.validate' do
     context 'when input data are valid' do
       let(:schema) do
-        '''
+        '
         {
           "type": "object",
           "properties": {
@@ -14,15 +15,15 @@ RSpec.describe UCL::Validator do
             }
           }
         }
-        '''
+        '
       end
 
       let(:string) do
-        '''
+        '
         {
           "key": "some string"
         }
-        '''
+        '
       end
 
       it 'can validate object' do
@@ -32,7 +33,7 @@ RSpec.describe UCL::Validator do
 
     context 'when input data are invalid' do
       let(:schema) do
-        '''
+        '
         {
           "type": "object",
           "properties": {
@@ -41,21 +42,21 @@ RSpec.describe UCL::Validator do
             }
           }
         }
-        '''
+        '
       end
 
       let(:string) do
-        '''
+        '
         {
           "key": "some string"
         }
-        '''
+        '
       end
 
       it 'can validate object' do
-        expect {
+        expect do
           described_class.validate(schema, string)
-        }.to raise_error(UCL::Error::SchemaError)
+        end.to raise_error(UCL::Error::SchemaError)
       end
     end
   end

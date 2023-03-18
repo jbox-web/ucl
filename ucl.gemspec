@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
     'homepage_uri'    => 'https://github.com/jbox-web/ucl',
     'changelog_uri'   => 'https://github.com/jbox-web/ucl/blob/master/CHANGELOG.md',
     'source_code_uri' => 'https://github.com/jbox-web/ucl',
-    'bug_tracker_uri' => 'https://github.com/jbox-web/ucl/issues'
+    'bug_tracker_uri' => 'https://github.com/jbox-web/ucl/issues',
   }
 
   s.required_ruby_version = '>= 2.6.0'

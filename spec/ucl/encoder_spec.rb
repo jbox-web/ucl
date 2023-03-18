@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe UCL::Encoder do
-
   let(:encoder) { described_class }
 
   let(:input_object) do
@@ -25,23 +26,23 @@ RSpec.describe UCL::Encoder do
       'hash' => {
         'foo' => 'bar',
         'bar' => 'baz',
-        'baz' => 'foo'
+        'baz' => 'foo',
       },
       'array_of_array' => [
-        ["foo", "bar"],
-        ["bar", "baz"]
+        %w[foo bar],
+        %w[bar baz]
       ],
       'section' => {
         'foo' => {
-          'key' => 'value'
+          'key' => 'value',
         },
         'bar' => {
           'key' => 'value',
         },
         'baz' => {
           'foo' => {
-            'key' => 'value'
-          }
+            'key' => 'value',
+          },
         },
       },
     }
@@ -52,7 +53,7 @@ RSpec.describe UCL::Encoder do
     context 'when emit_type is config' do
       let(:output_ucl_conf) { File.read(get_fixture_path('output_ucl.conf')) }
 
-      it 'should encode UCL conf' do
+      it 'encodes UCL conf' do
         expect(encoder.encode(input_object)).to eq(output_ucl_conf)
       end
     end
@@ -60,7 +61,7 @@ RSpec.describe UCL::Encoder do
     context 'when emit_type is yaml' do
       let(:output_ucl_conf) { File.read(get_fixture_path('output_ucl.yml')) }
 
-      it 'should encode UCL conf as yaml' do
+      it 'encodes UCL conf as yaml' do
         expect(encoder.encode(input_object, 'yaml')).to eq(output_ucl_conf.chomp)
       end
     end
@@ -68,7 +69,7 @@ RSpec.describe UCL::Encoder do
     context 'when emit_type is json' do
       let(:output_ucl_conf) { File.read(get_fixture_path('output_ucl.json')) }
 
-      it 'should encode UCL conf as json' do
+      it 'encodes UCL conf as json' do
         expect(encoder.encode(input_object, 'json')).to eq(output_ucl_conf.chomp)
       end
     end
@@ -76,7 +77,7 @@ RSpec.describe UCL::Encoder do
     context 'when emit_type is json_compact' do
       let(:output_ucl_conf) { File.read(get_fixture_path('output_ucl.json.min')) }
 
-      it 'should encode UCL conf as json_compact' do
+      it 'encodes UCL conf as json_compact' do
         expect(encoder.encode(input_object, 'json_compact')).to eq(output_ucl_conf.chomp)
       end
     end
@@ -87,9 +88,9 @@ RSpec.describe UCL::Encoder do
       end
 
       it 'raises an error' do
-        expect {
+        expect do
           encoder.encode(input_object)
-        }.to raise_error(UCL::Error::TypeError)
+        end.to raise_error(UCL::Error::TypeError)
       end
     end
 
@@ -99,9 +100,9 @@ RSpec.describe UCL::Encoder do
       end
 
       it 'raises an error' do
-        expect {
+        expect do
           encoder.encode(input_object)
-        }.to raise_error(UCL::Error::TypeError)
+        end.to raise_error(UCL::Error::TypeError)
       end
     end
   end

@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe UCL::Decoder do
-
   let(:decoder) { described_class }
 
   let(:input_ucl_conf) { File.read(get_fixture_path('input_ucl.conf')) }
@@ -28,19 +29,19 @@ RSpec.describe UCL::Decoder do
       'hash' => {
         'foo' => 'bar',
         'bar' => 'baz',
-        'baz' => 'foo'
+        'baz' => 'foo',
       },
       'array_of_array' => [
-        ['foo', 'bar'],
-        ['bar', 'baz']
+        %w[foo bar],
+        %w[bar baz]
       ],
       'auto_array' => {
-        'key' => ['foo', 'bar', 'baz']
+        'key' => %w[foo bar baz],
       },
       'section' => [
         {
           'foo' => {
-            'key' => 'value'
+            'key' => 'value',
           },
         },
         {
@@ -51,10 +52,10 @@ RSpec.describe UCL::Decoder do
         {
           'baz' => {
             'foo' => {
-              'key' => 'value'
-            }
+              'key' => 'value',
+            },
           },
-        },
+        }
       ],
       'subsection' => {
         'host' => [
@@ -66,14 +67,14 @@ RSpec.describe UCL::Decoder do
             'host' => 'hostname',
             'port' => 901,
           }
-        ]
-      }
+        ],
+      },
     }
   end
 
 
   describe '.decode' do
-    it 'should decode UCL conf' do
+    it 'decodes UCL conf' do
       expect(decoder.decode(input_ucl_conf)).to eq(output_object)
     end
   end

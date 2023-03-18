@@ -9,7 +9,7 @@ module UCL
       'config'       => UCL::Wrapper::Emitters[:UCL_EMIT_CONFIG],
       'yaml'         => UCL::Wrapper::Emitters[:UCL_EMIT_YAML],
       'msgpack'      => UCL::Wrapper::Emitters[:UCL_EMIT_MSGPACK],
-      'max'          => UCL::Wrapper::Emitters[:UCL_EMIT_MAX]
+      'max'          => UCL::Wrapper::Emitters[:UCL_EMIT_MAX],
     }.freeze
 
     DEFAULT_EMITTER = 'config'

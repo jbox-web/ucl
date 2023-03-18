@@ -1,17 +1,18 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe UCL do
-
   describe '.load' do
     it 'can decode UCL data with .load' do
-      expect(UCL.load('foo = bar')).to eq({ 'foo' => 'bar' })
+      expect(described_class.load('foo = bar')).to eq({ 'foo' => 'bar' })
     end
 
-    it 'should be threadsafe' do
+    it 'is threadsafe' do
       threads = []
       (1..10).each do |i|
         threads << Thread.new do
-          expect(UCL.load("foo = #{i}")).to eq({ 'foo' => i })
+          expect(described_class.load("foo = #{i}")).to eq({ 'foo' => i })
         end
       end
 
@@ -22,14 +23,14 @@ RSpec.describe UCL do
 
   describe '.dump' do
     it 'can encode UCL data with .dump' do
-      expect(UCL.dump({ 'foo' => 'bar' })).to eq("foo = \"bar\";\n")
+      expect(described_class.dump({ 'foo' => 'bar' })).to eq("foo = \"bar\";\n")
     end
 
-    it 'should be threadsafe' do
+    it 'is threadsafe' do
       threads = []
       (1..10).each do |i|
         threads << Thread.new do
-          expect(UCL.dump({ 'foo' => i })).to eq("foo = #{i};\n")
+          expect(described_class.dump({ 'foo' => i })).to eq("foo = #{i};\n")
         end
       end
 
@@ -41,7 +42,7 @@ RSpec.describe UCL do
   describe '.validate' do
     context 'when input data are valid' do
       let(:schema) do
-        '''
+        '
         {
           "type": "object",
           "properties": {
@@ -50,25 +51,25 @@ RSpec.describe UCL do
             }
           }
         }
-        '''
+        '
       end
 
       let(:string) do
-        '''
+        '
         {
           "key": "some string"
         }
-        '''
+        '
       end
 
       it 'can validate object' do
-        expect(UCL.validate(schema, string)).to be true
+        expect(described_class.validate(schema, string)).to be true
       end
     end
 
     context 'when input data are invalid' do
       let(:schema) do
-        '''
+        '
         {
           "type": "object",
           "properties": {
@@ -77,21 +78,21 @@ RSpec.describe UCL do
             }
           }
         }
-        '''
+        '
       end
 
       let(:string) do
-        '''
+        '
         {
           "key": "some string"
         }
-        '''
+        '
       end
 
       it 'can validate object' do
-        expect {
-          UCL.validate(schema, string)
-        }.to raise_error(UCL::Error::SchemaError)
+        expect do
+          described_class.validate(schema, string)
+        end.to raise_error(UCL::Error::SchemaError)
       end
     end
   end
@@ -100,7 +101,7 @@ RSpec.describe UCL do
   describe '.valid?' do
     context 'when input data are valid' do
       let(:schema) do
-        '''
+        '
         {
           "type": "object",
           "properties": {
@@ -109,25 +110,25 @@ RSpec.describe UCL do
             }
           }
         }
-        '''
+        '
       end
 
       let(:string) do
-        '''
+        '
         {
           "key": "some string"
         }
-        '''
+        '
       end
 
       it 'can validate object' do
-        expect(UCL.valid?(schema, string)).to be true
+        expect(described_class.valid?(schema, string)).to be true
       end
     end
 
     context 'when input data are invalid' do
       let(:schema) do
-        '''
+        '
         {
           "type": "object",
           "properties": {
@@ -136,19 +137,19 @@ RSpec.describe UCL do
             }
           }
         }
-        '''
+        '
       end
 
       let(:string) do
-        '''
+        '
         {
           "key": "some string"
         }
-        '''
+        '
       end
 
       it 'can validate object' do
-        expect(UCL.valid?(schema, string)).to be false
+        expect(described_class.valid?(schema, string)).to be false
       end
     end
   end

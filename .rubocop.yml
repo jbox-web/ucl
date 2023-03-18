@@ -1,12 +1,26 @@
+require:
+  - rubocop-rake
+  - rubocop-rspec
+
 AllCops:
   NewCops: enable
   TargetRubyVersion: 2.6
   Exclude:
     - bin/*
-    - spec/**/*
+
+#########
+# STYLE #
+#########
 
 Style/Documentation:
   Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+##########
+# LAYOUT #
+##########
 
 Layout/LineLength:
   Max: 140
@@ -24,5 +38,6 @@ Layout/EmptyLinesAroundModuleBody:
   Enabled: false
 
 Layout/HashAlignment:
-  EnforcedColonStyle: table
-  EnforcedHashRocketStyle: table
+  # EnforcedColonStyle: table
+  # EnforcedHashRocketStyle: table
+  Enabled: false
