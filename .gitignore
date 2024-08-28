@@ -10,3 +10,6 @@ coverage/
 
 # Ignore .so files
 *.so
+
+# Ignore .dylib files
+*.dylib

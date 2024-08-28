@@ -16,7 +16,9 @@ task :compile do
     system 'make'
   end
 
-  FileUtils.cp "#{ext_dir}/src/.libs/libucl.so", "#{lib_dir}/libucl.so"
+  suffix = RUBY_PLATFORM.include?('darwin') ? 'dylib' : 'so'
+
+  FileUtils.cp "#{ext_dir}/src/.libs/libucl.#{suffix}", "#{lib_dir}/libucl.#{suffix}"
 end
 
 desc 'Make clean'
@@ -28,7 +30,9 @@ task :make_clean do
     system 'make clean'
   end
 
-  FileUtils.rm_f "#{lib_dir}/libucl.so"
+  suffix = RUBY_PLATFORM.include?('darwin') ? 'dylib' : 'so'
+
+  FileUtils.rm_f "#{lib_dir}/libucl.#{suffix}"
 end
 
 task clean: [:make_clean]
