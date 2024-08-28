@@ -9,11 +9,8 @@ RSpec.describe UCL do
     end
 
     it 'is threadsafe' do
-      threads = []
-      (1..10).each do |i|
-        threads << Thread.new do
-          expect(described_class.load("foo = #{i}")).to eq({ 'foo' => i })
-        end
+      threads = (1..10).map do |i|
+        Thread.new { expect(described_class.load("foo = #{i}")).to eq({ 'foo' => i }) }
       end
 
       threads.map(&:join)
@@ -27,11 +24,8 @@ RSpec.describe UCL do
     end
 
     it 'is threadsafe' do
-      threads = []
-      (1..10).each do |i|
-        threads << Thread.new do
-          expect(described_class.dump({ 'foo' => i })).to eq("foo = #{i};\n")
-        end
+      threads = (1..10).map do |i|
+        Thread.new { expect(described_class.dump({ 'foo' => i })).to eq("foo = #{i};\n") }
       end
 
       threads.map(&:join)

@@ -1,4 +1,6 @@
+---
 require:
+  - rubocop-performance
   - rubocop-rake
   - rubocop-rspec
 
@@ -7,6 +9,14 @@ AllCops:
   TargetRubyVersion: 3.0
   Exclude:
     - bin/*
+
+
+###########
+# GEMSPEC #
+###########
+
+Gemspec/RequireMFA:
+  Enabled: false
 
 #########
 # STYLE #
