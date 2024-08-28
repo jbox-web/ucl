@@ -24,16 +24,6 @@ Gem::Specification.new do |s|
 
   s.extensions << 'ext/Rakefile'
 
-  s.add_runtime_dependency 'ffi'
-  s.add_runtime_dependency 'zeitwerk'
-
-  s.add_development_dependency 'activesupport'
-  s.add_development_dependency 'guard-rspec'
-  s.add_development_dependency 'pry'
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec'
-  s.add_development_dependency 'rubocop'
-  s.add_development_dependency 'rubocop-rake'
-  s.add_development_dependency 'rubocop-rspec'
-  s.add_development_dependency 'simplecov'
+  s.add_dependency 'ffi'
+  s.add_dependency 'zeitwerk'
 end
