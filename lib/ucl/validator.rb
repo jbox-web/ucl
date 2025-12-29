@@ -10,7 +10,7 @@ module UCL
     end
 
 
-    def self.do_validation(schema, string)
+    def self.do_validation(schema, string) # rubocop:disable Naming/PredicateMethod
       error = UCL::Wrapper::SchemaError.new
       UCL::Wrapper.object_validate(schema, string, error)
       raise UCL::Error::SchemaError, error.message if error.code != :UCL_SCHEMA_OK
