@@ -3,8 +3,8 @@
 [![GitHub license](https://img.shields.io/github/license/jbox-web/ucl.svg)](https://github.com/jbox-web/ucl/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/jbox-web/ucl.svg)](https://github.com/jbox-web/ucl/releases/latest)
 [![CI](https://github.com/jbox-web/ucl/workflows/CI/badge.svg)](https://github.com/jbox-web/ucl/actions)
-[![Code Climate](https://codeclimate.com/github/jbox-web/ucl/badges/gpa.svg)](https://codeclimate.com/github/jbox-web/ucl)
-[![Test Coverage](https://codeclimate.com/github/jbox-web/ucl/badges/coverage.svg)](https://codeclimate.com/github/jbox-web/ucl/coverage)
+[![Maintainability](https://qlty.sh/gh/jbox-web/projects/ucl/maintainability.svg)](https://qlty.sh/gh/jbox-web/projects/ucl)
+[![Code Coverage](https://qlty.sh/gh/jbox-web/projects/ucl/coverage.svg)](https://qlty.sh/gh/jbox-web/projects/ucl)
 
 [LibUCL](https://github.com/vstakhov/libucl) is a universal configuration language.
 

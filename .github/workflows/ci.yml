@@ -43,6 +43,7 @@ jobs:
           - '3.3'
           - '3.2'
           - 'head'
+
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -56,9 +57,11 @@ jobs:
       - name: Compile libucl
         run: bin/rake compile
 
-      - name: RSpec & publish code coverage
-        uses: paambaati/codeclimate-action@v9.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      - name: Run RSpec
+        run: bin/rspec
+
+      - name: Publish code coverage
+        uses: qltysh/qlty-action/coverage@v2
         with:
-          coverageCommand: bin/rspec
+          token: ${{ secrets.QLTY_COVERAGE_TOKEN }}
+          files: coverage/coverage.json
