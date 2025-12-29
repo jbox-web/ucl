@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
     'bug_tracker_uri' => 'https://github.com/jbox-web/ucl/issues',
   }
 
-  s.required_ruby_version = '>= 3.1.0'
+  s.required_ruby_version = '>= 3.2.0'
 
   s.files = `git ls-files`.split("\n")
 
