@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 3.2.0'
 
-  s.files = `git ls-files`.split("\n")
+  s.files = Dir['README.md', 'CHANGELOG.md', 'LICENSE', 'lib/**/*.rb', 'lib/**/*.rake', 'ext/Rakefile']
 
   s.extensions << 'ext/Rakefile'
 
